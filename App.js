@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import HomeScreen from './src/screens/HomeScreen'
+import Navigation from './src/components/UI/Navigation'
+import MovieDetailScreen from './src/screens/MovieDetailScreen'
+
+const App = () => {
+	return (
+		<>
+			<StatusBar backgroundColor={'#000'} />
+			<ScrollView style={styles.container}>
+				{/* <HomeScreen /> */}
+				<MovieDetailScreen/>
+			</ScrollView>
+			<Navigation />
+		</>
+	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	container: {
+		flex: 1,
+		width: '100%',
+		backgroundColor: '#0E171E',
+	},
+})
+
+export default App

@@ -1,4 +1,6 @@
 node_modules/
+.vscode/
+App.css
 .expo/
 dist/
 npm-debug.*
@@ -8,6 +10,7 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*package-lock.json
 web-build/
 
 # macOS
