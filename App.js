@@ -1,18 +1,12 @@
-import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native'
+import { StyleSheet, StatusBar } from 'react-native'
 
-import HomeScreen from './src/screens/HomeScreen'
-import Navigation from './src/components/UI/Navigation'
-import MovieDetailScreen from './src/screens/MovieDetailScreen'
+import Routes from './src/navigation/Routes'
 
 const App = () => {
 	return (
 		<>
 			<StatusBar backgroundColor={'#000'} />
-			<ScrollView style={styles.container}>
-				{/* <HomeScreen /> */}
-				<MovieDetailScreen/>
-			</ScrollView>
-			<Navigation />
+			<Routes />
 		</>
 	)
 }
@@ -21,6 +15,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		width: '100%',
+		height: '100%',
 		backgroundColor: '#0E171E',
 	},
 })

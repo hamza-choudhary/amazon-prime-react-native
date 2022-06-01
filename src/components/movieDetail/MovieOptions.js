@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 	container: {
     flexDirection: 'row',
 		justifyContent: 'space-around',
-		marginHorizontal: 15,
+		marginRight: 15,
 		marginVertical: 30,
 	},
 	option: {

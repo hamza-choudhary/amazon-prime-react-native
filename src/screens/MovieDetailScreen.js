@@ -1,100 +1,107 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Options from '../components/movieDetail/Options'
-import { MaterialIcons } from '@expo/vector-icons'
+import {
+	Image,
+	StyleSheet,
+	Text,
+	TouchableWithoutFeedback,
+	View,
+	ScrollView,
+} from 'react-native'
+import { useState } from 'react'
+import Options from '../components/movieDetail/MovieOptions'
+import Description from '../components/movieDetail/MovieDescription'
+import MovieTitle from '../components/movieDetail/MovieTitle'
+import MovieRelated from '../components/movieDetail/MovieRelated'
+import MoreDetails from '../components/movieDetail/MoreDetails'
 
-const MovieDetailScreen = () => {
+const MovieDetailScreen = (props) => {
+	const data = props.route.params.data
+	const [myTab, setMyTab] = useState(false)
+
 	return (
-		<>
+		<ScrollView>
 			<View>
-				<Image style={styles.cover} source={{ uri: 'uri.com' }} />
+				<Image
+					style={styles.cover}
+					source={{
+						uri: data.imgUri,
+					}}
+				/>
+			</View>
+			<View style={styles.container}>
+				<MovieTitle title={data.title} />
+				<Options />
+				<Description
+					summary={data.summary}
+					rating={data.rating}
+					runtime={data.runtime}
+				/>
 			</View>
 
-			<Text style={styles.prime}>prime</Text>
-			<Text style={styles.primeTxt}>Watch for $0.00 with Prime</Text>
-
-			<TouchableOpacity style={styles.button}>
-				<Text style={{ fontWeight: '400', color: '#000' }}>
-					Watch with Prime
-				</Text>
-				<Text style={{fontSize: 11}}>Start your 7-day free trial</Text>
-			</TouchableOpacity>
-
-			<Options />
-
-			<View style={styles.description}>
-				<Text style={{ ...styles.whiteTxt, marginVertical: 4 }}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-					nulla ipsum necessitatibus ex in ipsa animi dolores aperiam, maiores
-					quae eum a numquam amet distinctio laboriosam. Nesciunt inventore sed
-					delectus.
-				</Text>
-				{/* //!props */}
-				<Text style={{ ...styles.greyTxt, marginVertical: 4 }}>IMBD 8.5</Text>
-
-				<View style={{ ...styles.featureContainer, marginVertical: 4 }}>
-					<Text style={styles.greyTxt}>2018 87min</Text>
-					<View style={styles.feature}>
-						<Text style={styles.featureTxt}>18+</Text>
+			<View style={styles.movieTabs}>
+				<TouchableWithoutFeedback onPress={() => setMyTab(false)}>
+					<View style={[styles.tab, !myTab ? styles.activeTab : null]}>
+						<Text style={[styles.txt, !myTab ? styles.activeTxt : null]}>
+							Related
+						</Text>
 					</View>
-					<View style={styles.feature}>
-						<Text style={styles.featureTxt}>4k UHD</Text>
+				</TouchableWithoutFeedback>
+				<TouchableWithoutFeedback onPress={() => setMyTab(true)}>
+					<View style={[styles.tab, myTab ? styles.activeTab : null]}>
+						<Text style={[styles.txt, myTab ? styles.activeTxt : null]}>
+							More Details
+						</Text>
 					</View>
-					<View style={styles.feature}>
-						<Text style={styles.featureTxt}>AD</Text>
-					</View>
-					<MaterialIcons name="comment" size={18} color="#55636E" />
-				</View>
-
-				<Text style={styles.greyTxt}>
-					Languages: Audio(4), Subtitles (19){' '}
-					<MaterialIcons name="keyboard-arrow-down" size={18} color="#55636E" />
-				</Text>
+				</TouchableWithoutFeedback>
 			</View>
-		</>
+
+			{!myTab ? (
+				<MovieRelated
+					title={data.title}
+					cast={data.cast}
+					director={data.director.name}
+				/>
+			) : (
+				<MoreDetails
+					cast={data.cast}
+					genres={data.genres}
+					director={data.director.name}
+				/>
+			)}
+		</ScrollView>
 	)
 }
 
 export default MovieDetailScreen
 
 const styles = StyleSheet.create({
-  primeTxt: {
-    color: '#ccc',
-    fontSize: 11,
-    margin: 20,
-
-  },
-  button: {
-    marginBottom: 8,
-    marginHorizontal: 20,
-    padding: 15,
-    alignItems: 'center',
-    backgroundColor: '#FFA624',
-    borderRadius: 5,
-  },
-	description: {
+	container: {
 		marginHorizontal: 20,
-		marginVertical: 3,
 	},
-	whiteTxt: {
-		color: '#ccc',
+	cover: {
+		resizeMode: 'stretch',
+		height: 230,
 	},
-	greyTxt: {
-		color: '#55636E',
-	},
-	featureContainer: {
+	movieTabs: {
 		flexDirection: 'row',
+		marginVertical: 20,
+		borderBottomColor: '#55636E',
+		borderBottomWidth: 1,
+	},
+	tab: {
+		flex: 1,
+		alignItems: 'center',
+		padding: 10,
+	},
+	activeTab: {
+		borderBottomColor: '#ccc',
+		borderBottomWidth: 2,
+	},
+	txt: {
+		fontSize: 18,
+		fontWeight: 'bold',
 		color: '#55636E',
 	},
-	feature: {
-		paddingHorizontal: 5,
-		justifyContent: 'center',
-		borderWidth: 1,
-		borderColor: '#55636E',
-		borderRadius: 2,
-		marginHorizontal: 5,
-	},
-	featureTxt: {
-		fontSize: 10,
-		color: '#55636E',
+	activeTxt: {
+		color: '#ccc',
 	},
 })

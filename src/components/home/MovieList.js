@@ -4,7 +4,6 @@ import ImgCard from '../UI/ImgCard'
 
 const MovieList = (props) => {
 	return (
-		
 		<View style={styles.container}>
 			<View style={styles.heading}>
 				<Text style={styles.headingTxt}>{props.heading}</Text>
@@ -13,7 +12,7 @@ const MovieList = (props) => {
 			<View>
 				<FlatList
 					data={props.data}
-					renderItem={({ item }) => <ImgCard uri={item.uri} />}
+					renderItem={({ item }) => <ImgCard data={item} />}
 					keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -43,5 +42,6 @@ const styles = StyleSheet.create({
 
   theList: {
     paddingLeft: 16,
+		paddingRight: 50,
   }
 })

@@ -1,16 +1,33 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	TouchableWithoutFeedback,
+} from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 const ImgCard = (props) => {
+
+	const navigation = useNavigation()
+
+	const navigateHandler = ()=> {
+		navigation.navigate('MovieDetailScreen', {data: props.data})
+	}
+
+	// console.log(props.data)
+
 	return (
-		<View style={styles.container}>
-			<Image
-				style={styles.img}
-				source={{
-          uri: `${props.uri}`
-				}}
-			/>
-		</View>
+		<TouchableWithoutFeedback onPress={navigateHandler}>
+			<View style={styles.container}>
+				<Image
+					style={styles.img}
+					source={{
+						uri: `${props.data.imgUri}`,
+					}}
+				/>
+			</View>
+		</TouchableWithoutFeedback>
 	)
 }
 
@@ -18,16 +35,17 @@ export default ImgCard
 
 const styles = StyleSheet.create({
 	container: {
-    flex: 1,
-		marginHorizontal: 5,
+		flex: 1,
 		marginVertical: 8,
-		marginHorizontal: 5,
-		width: 150,
-    borderRadius: 8,
-    overflow: 'hidden' //very important
+		marginRight: 8,
+		width: 160,
+		borderRadius: 8,
+		overflow: 'hidden', //very important
 	},
 	img: {
-    resizeMode: 'stretch',
-		height: 85,
+		resizeMode: 'stretch',
+		height: 100,
+		width:160,
+		flex:1,
 	},
 })

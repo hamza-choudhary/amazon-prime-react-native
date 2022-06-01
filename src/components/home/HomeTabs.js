@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
 		color: '#ccc',
 	},
 	active: {
-		//FIXME: remove bg color
-		backgroundColor: 'green',
 		borderBottomColor: '#fff',
 		borderBottomWidth: 2,
 	},
