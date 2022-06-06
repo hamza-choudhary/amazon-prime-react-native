@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native'
-
+import MovieCarousel from './src/components/UI/MovieCarousel'
 import Routes from './src/navigation/Routes'
+
 
 const App = () => {
 	return (

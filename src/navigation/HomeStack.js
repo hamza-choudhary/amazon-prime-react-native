@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import HomeScreen from '../screens/HomeScreen'
 import MovieDetailScreen from '../screens/MovieDetailScreen'
+import  LoginScreen from '../screens/LoginScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
