@@ -20,7 +20,7 @@ const HomeTabs = ({ onSetTabActive, active }) => {
 			<View style={styles.logo}>
 				<Image
 					style={styles.logoImg}
-					source={require('../../../assets/prime-logo.png')}
+					source={require('../../../assets/PopFlix-logos_white.png')}
 				/>
 			</View>
 			<View style={styles.tabs}>
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	logoImg: {
-		width: 80,
-		height: 80,
+		width: 140,
+		height: 140,
 	},
 	tabs: {
 		flexDirection: 'row',
