@@ -1,10 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeStack from './HomeStack'
 import FindScreen from '../screens/FindScreen'
-import DownloadScreen from '../screens/DownloadScreen'
-import MyStuffScreen from '../screens/MyStuffScreen'
 import { AntDesign } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
+import DownloadScreen from '../screens/DownloadScreen'
+import MyStuffScreen from '../screens/MyStuffScreen'
+import SettingsScreen from '../screens/SettingsScreen'
+import SettingsStack from './SettingsStack'
 
 const Tab = createBottomTabNavigator()
 
@@ -36,7 +38,7 @@ const BottomTabs = () => {
 							name="search1"
 							size={22}
 							color={`${focused ? '#1B7CB8' : '#ccc'}`}
-						/>
+					 	/>
 					),
 				}}
 				name="FindScreen"
@@ -53,7 +55,7 @@ const BottomTabs = () => {
 						/>
 					),
 				}}
-				name="DownloadsScreen"
+				name="DownloadScreen"
 				component={DownloadScreen}
 			/>
 			<Tab.Screen
@@ -67,8 +69,8 @@ const BottomTabs = () => {
 						/>
 					),
 				}}
-				name="MyStuffScreen"
-				component={MyStuffScreen}
+				name="SettingsStack"
+				component={SettingsStack}
 			/>
 		</Tab.Navigator>
 	)

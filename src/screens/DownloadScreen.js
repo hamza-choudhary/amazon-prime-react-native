@@ -1,42 +1,72 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
+import * as React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 const DownloadScreen = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={[styles.h2, { fontWeight: 'bold' }]}>Downloads</Text>
-
-			<Image
-				style={styles.img}
-				source={require('../../assets/default-download.png')}
-			/>
-
-			<Text style={[styles.h2, { marginTop: 50 }]}>No Videos downloaded</Text>
-			<View style={{ flexDirection: 'row' }}>
-				<Text style={{ color: '#fff' }}>Auto Downloads: On . </Text>
-				<Text style={{ color: '#1B7CB8' }}> Manage</Text>
+			<View
+				style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}
+			>
+				<Text style={styles.download}>Downloads</Text>
 			</View>
+			<View
+				style={{
+					flex: 2,
+					justifyContent: 'center',
+					alignItems: 'center',
+					alignContent: 'flex-end',
+				}}
+			>
+				<MaterialCommunityIcons
+					name="download-box-outline"
+					size={50}
+					color="white"
+				/>
+			</View>
+			<View style={styles.container2}>
+				<Text style={styles.text1}>No videos downloaded</Text>
+			</View>
+			<View
+				style={{ flex: 0.5, flexDirection: 'row', justifyContent: 'center' }}
+			>
+				<View>
+					<Text style={{ color: 'white' }}>Auto Downloads:</Text>
+				</View>
+				<View>
+					<Text style={styles.text1}>On .</Text>
+				</View>
+				<View>
+					<Text style={{ color: 'royalblue' }}> Manage</Text>
+				</View>
+			</View>
+			<View style={{ flex: 1.5 }}></View>
 		</View>
 	)
 }
 
-export default DownloadScreen
-
 const styles = StyleSheet.create({
 	container: {
-		padding: 20,
+		flexDirection: 'column',
+		flex: 5,
+	},
+	container2: {
+		flexDirection: 'column',
+		flex: 0.5,
 		justifyContent: 'center',
 		alignItems: 'center',
-		textAlign: 'center',
 	},
-	h2: {
-		fontSize: 17,
-		color: '#fff',
+
+	text1: {
+		color: 'white',
+		fontWeight: 'bold',
+		fontSize: 15,
 	},
-	img: {
-		marginTop: '30%',
-		width: 200,
-		height: 200,
-		resizeMode: 'contain',
+	download: {
+		color: 'white',
+		fontWeight: 'bold',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 })
+
+export default DownloadScreen

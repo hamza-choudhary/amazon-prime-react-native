@@ -12,7 +12,6 @@ const MovieTitle = (props) => {
 				<Text style={{ fontWeight: '400', color: '#000' }}>
 					Watch with Prime
 				</Text>
-				<Text style={{ fontSize: 11 }}>Start your 7-day free trial</Text>
 			</TouchableOpacity>
 		</>
 	)

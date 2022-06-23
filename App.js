@@ -1,7 +1,8 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet, StatusBar, LogBox } from 'react-native'
 import MovieCarousel from './src/components/UI/MovieCarousel'
 import Routes from './src/navigation/Routes'
 
+LogBox.ignoreLogs(['Remote debugger'])
 
 const App = () => {
 	return (

@@ -1,24 +1,57 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { useState } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
-const HomeTabs = () => {
+const HomeTabs = ({ onSetTabActive, active }) => {
+	const homeTabHandler = () => {
+		onSetTabActive({ home: true })
+	}
+	const tvShowTabHandler = () => {
+		onSetTabActive({ tv: true })
+	}
+	const movieTabHandler = () => {
+		onSetTabActive({ movies: true })
+	}
+	const kidTabHandler = () => {
+		onSetTabActive({ kids: true })
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.logo}>
-				<Image style={styles.logoImg} source={require('../../../assets/prime-logo.png')} />
+				<Image
+					style={styles.logoImg}
+					source={require('../../../assets/prime-logo.png')}
+				/>
 			</View>
 			<View style={styles.tabs}>
-				<View style={{ ...styles.tabItem, ...styles.active }}>
-					<Text style={{ ...styles.text, ...styles.activeTxt }}>Home</Text>
-				</View>
-				<View style={styles.tabItem}>
-					<Text style={styles.text}>TV Shows</Text>
-				</View>
-				<View style={styles.tabItem}>
-					<Text style={styles.text}>Movies</Text>
-				</View>
-				<View style={styles.tabItem}>
-					<Text style={styles.text}>Kids</Text>
-				</View>
+				<TouchableOpacity style={[styles.tabItem, active.home && styles.active]} onPress={homeTabHandler}>
+					<View>
+						<Text style={[styles.text, active.home && styles.activeTxt]}>
+							Home
+						</Text>
+					</View>
+				</TouchableOpacity>
+				<TouchableOpacity style={[styles.tabItem, active.tv && styles.active]} onPress={tvShowTabHandler}>
+					<View>
+						<Text style={[styles.text, active.tv && styles.activeTxt]}>
+							TV Shows
+						</Text>
+					</View>
+				</TouchableOpacity>
+				<TouchableOpacity style={[styles.tabItem, active.movies && styles.active]} onPress={movieTabHandler}>
+					<View>
+						<Text style={[styles.text, active.movies && styles.activeTxt]}>
+							Movies
+						</Text>
+					</View>
+				</TouchableOpacity>
+				<TouchableOpacity style={[styles.tabItem, active.kids && styles.active]} onPress={kidTabHandler}>
+					<View>
+						<Text style={[styles.text, active.kids && styles.activeTxt]}>
+							Kids
+						</Text>
+					</View>
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
@@ -28,7 +61,7 @@ export default HomeTabs
 
 const styles = StyleSheet.create({
 	logo: {
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	logoImg: {
 		width: 80,
@@ -37,6 +70,7 @@ const styles = StyleSheet.create({
 	tabs: {
 		flexDirection: 'row',
 		paddingHorizontal: 20,
+		marginBottom: 5,
 	},
 	tabItem: {
 		flex: 1,
