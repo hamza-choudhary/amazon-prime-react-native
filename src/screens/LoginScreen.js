@@ -28,7 +28,7 @@ const LoginScreen = () => {
 			<ScrollView>
 				<View style={styles.header}>
 					<Image
-						source={require('../../assets/prime-logo.png')}
+						source={require('../../assets/PopFlix-logos_white.png')}
 						style={styles.logo}
 					/>
 				</View>
